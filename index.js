@@ -1,5 +1,5 @@
 // Event Organization
-const startTime = "14:00"; // always in xx:xx format
+const startTime = "13:00"; // always in xx:xx format
 const endTime = "17:00";
 const breakDuration = "00:30";
 const slideNum = 40;
@@ -29,13 +29,23 @@ const firstPartSlideAmount = slideNum / 2;
 
 for (let i = 1; i <= firstPartSlideAmount; i++) {
     let slideTimeRange = startTimeinMinutes + ( timePerSlide * i );
+
     let hours = Math.floor(slideTimeRange / 60);
+    if (hours < 10) {
+        hours = "0" + hours;
+    };
+
     let minutes = Math.floor(slideTimeRange % 60);
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    };
+
+
     console.log(`Slide ${i} by ${hours}:${minutes}h`);
 }
 
 function breakTimetoHours (time) {
-    let hours = Math.floor(time/ 60);
+    let hours = Math.floor(time / 60);
     let minutes = time % 60;
     return hours + ":" + Math.floor(minutes);
 }
@@ -47,8 +57,17 @@ const secondPartSlideAmount = slideNum / 2;
 
 for (let i = 1; i <= secondPartSlideAmount; i++) {
     let slideTimeRange = breakEnd + ( timePerSlide * i );
+
     let hours = Math.floor(slideTimeRange / 60);
+    if (hours < 10) {
+        hours = "0" + hours;
+    };
+
     let minutes = Math.floor(slideTimeRange % 60);
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    };
+
     let slideCount = secondPartSlideAmount + i;
     console.log(`Slide ${slideCount} by ${hours}:${minutes}h`);
 };
